@@ -16,20 +16,19 @@ def test():
 
 @bp.route('/best_console')
 def best_console():
-    # Query for everything last 7, based on number of game copies sold globally
+    # Query for everything last 7 years, based on number of game copies sold globally
 
     api_response = requests.get('https://api.dccresource.com/api/games/')
     # games = api_response.json()
     games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
 
-    recentgames = []
+    recent_games = []
 
     for game in games:
-        year = int.game.year
-        if year > 2012:
-            recentgames.append(game)
+        if game.year is not None and game.year >= 2013:
+            recent_games.append(game)
 
-    return render_template('video_games_views/best_console.html', recentgames=recentgames)
+    return render_template('video_games_views/best_console.html', recent_games=recent_games)
 
 
 @bp.route('/search_result')

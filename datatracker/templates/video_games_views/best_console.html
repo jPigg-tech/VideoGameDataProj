@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-    {% for game in recentgames %}
-    {{ game }}
+    {% for game in recent_games %}
+    {{ game.name }}
+    {{ game.year }}
     {% endfor %}
 </body>
 </html>
