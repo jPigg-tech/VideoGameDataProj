@@ -8,7 +8,7 @@ bp = Blueprint('video_game_mod2', __name__)
 @bp.route('/api_test')
 def test():
     api_response = requests.get('https://api.dccresource.com/api/games/')
-    games = api_response.json()
-    # games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+    # games = api_response.json()
+    games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
     for game in games:
-        print(game["name"])
+        print(game)
