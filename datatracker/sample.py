@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
+import requests, json
 
 bp = Blueprint('sample', __name__)
 
@@ -10,6 +11,10 @@ def test():
 
 @bp.route('/sample')
 def index():
+    games = requests.get("https://api.dccresource.com/api/games/")
+    games_response = games.json()
+    print(games_response)
+
     message = "This text is coming from the 'sample.py' module, not the html file!"
     phrase = "Python is cool!"
     return render_template('sample/index.html', message=message, word=phrase)

@@ -15,8 +15,9 @@ def create_app():
     except OSError:
         pass
 
-    from . import sample
+    from . import sample, video_game_mod2
     app.register_blueprint(sample.bp)
+    app.register_blueprint(video_game_mod2.bp)
     # app.add_url_rule('/', endpoint='index')
 
     @app.route('/hello')
