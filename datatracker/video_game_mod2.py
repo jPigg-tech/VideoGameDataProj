@@ -16,7 +16,16 @@ def test():
 
 @bp.route('/best_console')
 def best_console():
-    pass
+    api_response = requests.get('https://api.dccresource.com/api/games/')
+    response = api_response
+    games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+
+    recent_games = []
+
+    for game in games:
+        if game.year >= 2013:
+            recent_games.append(game)
+    return render_template('video_games_views/best_console.html', recentgames=recent_games)
 
 
 @bp.route('/search_result')
