@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-    {{ ps4saless }}
+    {% for game in recentgames %}
+    {{ game }}
+    {% endfor %}
 </body>
 </html>

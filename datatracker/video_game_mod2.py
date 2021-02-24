@@ -22,11 +22,14 @@ def best_console():
     # games = api_response.json()
     games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
 
-    ps4sales = 0
+    recentgames = []
+
     for game in games:
-        if game.platform == "PS4" and game.year >= 2007:
-            ps4sales += game.globalSales
-    return render_template('video_games_views/best_console.html', ps4sales=ps4sales)
+        year = int.game.year
+        if year > 2012:
+            recentgames.append(game)
+
+    return render_template('video_games_views/best_console.html', recentgames=recentgames)
 
 
 @bp.route('/search_result')
