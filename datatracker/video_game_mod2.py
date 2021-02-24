@@ -16,7 +16,17 @@ def test():
 
 @bp.route('/best_console')
 def best_console():
-    pass
+    # Query for everything last 7, based on number of game copies sold globally
+
+    api_response = requests.get('https://api.dccresource.com/api/games/')
+    # games = api_response.json()
+    games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+
+    ps4sales = 0
+    for game in games:
+        if game.platform == "PS4" and game.year >= 2007:
+            ps4sales += game.globalSales
+    return render_template('video_games_views/best_console.html', ps4sales=ps4sales)
 
 
 @bp.route('/search_result')
