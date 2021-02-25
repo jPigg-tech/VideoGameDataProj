@@ -64,23 +64,17 @@ def best_console():
     return render_template('video_games_views/best_console.html', platform_totals=platform_totals)
 
 
-@bp.route('/search_result', methods = ['POST', 'GET'])
-def search_result(searchgame):
+@bp.route('/search_result', methods=('GET', 'POST'))
+def search_result():
     api_response = requests.get('https://api.dccresource.com/api/games/')
     games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
-
-    if search_result.method == 'POST':
-
-
-
-
-    # search_match = None
-
-    # for game in games:
-    #     if game.name == search_input:
-    #         search_match = game
-
-    return render_template('video_games_views/search_result.html')
+    if request.method == 'POST':
+        search_input = request.form['search_input']
+       # searchmatch = None
+        for game in games:
+            if game.name == search_input:
+                searchmatch = game
+    return render_template('video_games_views/search_result.html', searchmatch=searchmatch)
 
 
 @bp.route('/custom_question')
