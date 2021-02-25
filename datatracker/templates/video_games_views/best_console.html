@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 </head>
 <body>
-    {% for game in recent_games %}
-    {{ game.platform }}
-    {% endfor %}
+<!--    {% for game in recent_games %}-->
+<!--    {{ game.platform }}-->
+<!--    {% endfor %}-->
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+
+    type: 'bar',
+
+
+    data: {
+        labels: ['PS3', 'PS4', 'X360', 'XOne', 'PC', 'Wii', 'WiiU', '3DS', 'PSV', 'PSP'],
+        datasets: [{
+            label: 'Console Sales Since 2013',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{ platform_totals['PS3']}}, {{ platform_totals['PS4']}}, {{ platform_totals['X360']}}, {{ platform_totals['XOne']}}, {{ platform_totals['Wii']}}, {{ platform_totals['WiiU']}}, {{ platform_totals['3DS']}}, {{ platform_totals['PSV']}}, {{ platform_totals['PSP']}}]
+
+<!--            data: [0, 10, 5, 2, 20, 30, 45]-->
+        }]
+    },
+
+
+    options: {}
+});
+</script>
 </body>
 </html>

@@ -63,7 +63,7 @@ def best_console():
         elif game.platform == 'PSP':
             platform_totals['PSP'] += game.globalSales
 
-    return render_template('video_games_views/best_console.html', recent_games=recent_games)
+    return render_template('video_games_views/best_console.html', platform_totals=platform_totals)
 
 
 @bp.route('/search_result')
