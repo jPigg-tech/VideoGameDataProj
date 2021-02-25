@@ -7,7 +7,7 @@
 <body>
   <form method="post">
     <label for="title">Search for your favorite game</label>
-    <input name="title" id="title" value="{{ request.form['search_input'] }}" required>
+    <input name="title" id="title" placeholder="Search" value="{{ request.form['title'] }}" required>
     <input type="submit" value="Submit">
 
       {{ searchmatch }}

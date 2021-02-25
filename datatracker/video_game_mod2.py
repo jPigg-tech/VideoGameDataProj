@@ -66,13 +66,15 @@ def best_console():
 
 @bp.route('/search_result', methods=('GET', 'POST'))
 def search_result():
-    api_response = requests.get('https://api.dccresource.com/api/games/')
-    games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+    if request.method == 'GET':
+        return render_template('video_games_views/search_result.html')
+    user_input = request.form['title'].lower()
     if request.method == 'POST':
-        search_input = request.form['search_input']
-       # searchmatch = None
+        api_response = requests.get('https://api.dccresource.com/api/games/')
+        games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+        # searchmatch = None
         for game in games:
-            if game.name == search_input:
+            if game.name.lower() == user_input:
                 searchmatch = game
     return render_template('video_games_views/search_result.html', searchmatch=searchmatch)
 
