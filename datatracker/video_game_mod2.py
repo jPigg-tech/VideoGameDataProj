@@ -63,6 +63,8 @@ def best_console():
         elif game.platform == 'PSP':
             platform_totals['PSP'] += game.globalSales
 
+
+    print(platform_totals)
     return render_template('video_games_views/best_console.html', platform_totals=platform_totals)
 
 
