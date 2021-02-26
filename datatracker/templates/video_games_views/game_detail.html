@@ -11,12 +11,12 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [{{ searchmatch.platform }}],
+        labels: [{{ game.platform }}],
         datasets: [{
-            label: {{ searchmatch.name }} + ' copy sales',
+            label: {{ game.name }} + ' copy sales',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [{{ searchmatch.globalSales }}]
+            data: [{{ game.globalSales }}]
         }]
     },
     options: {}

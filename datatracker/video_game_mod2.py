@@ -64,26 +64,11 @@ def best_console():
     return render_template('video_games_views/best_console.html', platform_totals=platform_totals)
 
 
-@bp.route('/search_result')
+@bp.route('/search_result', methods=['GET', 'POST'])
 def search_result():
     if request.method == 'GET':
         return render_template('video_games_views/search_result.html')
 
-    # user_input = request.form['title'].lower()
-
-    # if request.method == 'POST':
-    #     api_response = requests.get('https://api.dccresource.com/api/games/')
-    #     games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
-    #
-    #     for game in games:
-    #         if game.name.lower() == user_input:
-    #             searchmatch = game
-    #
-    #     return render_template('video_games_views/game_detail', searchmatch=searchmatch)
-
-
-@bp.route('/game_detail', methods=['POST'])
-def game_detail():
     if request.method == 'POST':
         user_input = request.form['title'].lower()
         api_response = requests.get('https://api.dccresource.com/api/games/')
@@ -91,9 +76,14 @@ def game_detail():
 
         for game in games:
             if game.name.lower() == user_input:
-                searchmatch = game
+                # return render_template(video_game_views, game=game)
+                return render_template('video_games_views/game_detail')
 
-        return render_template('video_games_views/game_detail', searchmatch=searchmatch)
+
+@bp.route('/game_detail', methods=['GET', 'POST'])
+def game_detail():
+    if request.method == 'GET':
+        return render_template('video_games_views/game_detail')
 
 
 @bp.route('/custom_question')
