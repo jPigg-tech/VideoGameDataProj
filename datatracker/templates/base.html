@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}Project 84</title>
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='customstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="/static/customstyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
@@ -23,7 +22,8 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/best_console">Home</a>
         <a class="nav-link" href="/search_result">Search for a Game</a>
-<!--        <a class="nav-link" href="#">Pricing</a>-->
+          <a class="nav-link" href="/custom_question">Best Selling Genre</a>
+
 
       </div>
     </div>

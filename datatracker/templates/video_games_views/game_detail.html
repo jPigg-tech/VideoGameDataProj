@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+
+<div style="margin: auto; width: 80%;">
 <canvas id="myChart"></canvas>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -22,4 +24,26 @@ var chart = new Chart(ctx, {
     options: {}
 });
 </script>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Publisher</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Platform</th>
+      <th scope="col">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{game.name}}</td>
+      <td>{{game.publisher}}</td>
+      <td>{{game.genre}}</td>
+      <td>{{game.platform}}</td>
+      <td>{{game.year}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 {% endblock %}

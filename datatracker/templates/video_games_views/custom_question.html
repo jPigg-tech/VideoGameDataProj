@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="indexHeader">hello</div>
+<div style="margin: auto; width: 80%;">
 <canvas id="myChart"></canvas>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -23,4 +23,5 @@ var chart = new Chart(ctx, {
     options: {}
 });
 </script>
+</div>
 {% endblock %}
