@@ -76,7 +76,12 @@ def search_result():
         for game in games:
             if game.name.lower() == user_input:
                 searchmatch = game
-    return render_template('video_games_views/search_result.html', searchmatch=searchmatch)
+
+        platform_search_totals = {
+            searchmatch.platform: searchmatch.globalSales,
+        }
+
+    return render_template('video_games_views/game_detail.html', searchmatch=searchmatch, platform_search_totals=platform_search_totals)
 
 
 @bp.route('/custom_question')
