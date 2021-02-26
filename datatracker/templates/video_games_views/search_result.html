@@ -8,7 +8,7 @@
 
 <h1>Search For Your Favorite Game</h1>
 <div>
-  <form method="post">
+  <form action="/game_detail" method="post">
     <div class="mb-3">
     <label for="title" ></label>
       <input name="title" id="title" class="form-label" placeholder="Search" value="{{ request.form['title'] }}" required>
