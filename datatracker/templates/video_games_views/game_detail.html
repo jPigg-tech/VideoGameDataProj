@@ -16,7 +16,7 @@ var chart = new Chart(ctx, {
         labels: ['{{ game.platform }}'],
         datasets: [{
             label: '{{ game.name }}' + ' copies sold globally (in millions)',
-            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#11202E',
             borderColor: 'rgb(255, 99, 132)',
             data: [{{ game.globalSales }}]
         }]

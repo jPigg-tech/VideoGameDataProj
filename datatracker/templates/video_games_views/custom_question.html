@@ -15,7 +15,7 @@ var chart = new Chart(ctx, {
         labels: ['Shooter', 'Sports', 'Adventure', 'Misc', 'Action', 'Platform', 'Simulation', 'Role-Playing', 'Fighting', 'Racing', 'Puzzle'],
         datasets: [{
             label: 'Genre Game Copies Sold since 2010 (in millions)',
-            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#167543',
             borderColor: 'rgb(255, 99, 132)',
             data: [{{ genre_totals['Shooter']}}, {{ genre_totals['Sports']}}, {{ genre_totals['Adventure']}}, {{ genre_totals['Misc']}}, {{ genre_totals['Action']}}, {{ genre_totals['Platform']}}, {{ genre_totals['Simulation']}}, {{ genre_totals['Role-Playing']}}, {{ genre_totals['Fighting']}}, {{ genre_totals['Racing']}}, {{ genre_totals['Puzzle']}}]
         }]
