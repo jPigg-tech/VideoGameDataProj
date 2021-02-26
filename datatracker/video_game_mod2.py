@@ -72,16 +72,12 @@ def search_result():
     if request.method == 'POST':
         api_response = requests.get('https://api.dccresource.com/api/games/')
         games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
-        #searchmatch = None
+
         for game in games:
             if game.name.lower() == user_input:
                 searchmatch = game
 
-        platform_search_totals = {
-            searchmatch.platform: searchmatch.globalSales,
-        }
-
-    return render_template('video_games_views/game_detail.html', searchmatch=searchmatch, platform_search_totals=platform_search_totals)
+        return render_template('video_games_views/game_detail.html', searchmatch=searchmatch)
 
 
 @bp.route('/custom_question')

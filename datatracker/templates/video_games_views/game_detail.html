@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{{ searchmatch.platform }}],
+        datasets: [{
+            label: {{ searchmatch.name }} + ' copy sales',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{ searchmatch.globalSales }}]
+        }]
+    },
+    options: {}
+});
+</script>
+{% endblock %}
