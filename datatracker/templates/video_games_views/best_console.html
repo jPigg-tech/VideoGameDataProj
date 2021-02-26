@@ -14,7 +14,7 @@ var chart = new Chart(ctx, {
     data: {
         labels: ['PS3', 'PS4', 'X360', 'XOne', 'PC', 'Wii', 'WiiU', '3DS', 'PSV', 'PSP'],
         datasets: [{
-            label: 'Console Game Copy Sales Since 2013',
+            label: 'Console Game Copy Sales Since 2013 (in millions)',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [{{ platform_totals['PS3']}}, {{ platform_totals['PS4']}}, {{ platform_totals['X360']}}, {{ platform_totals['XOne']}}, {{ platform_totals['PC']}}, {{ platform_totals['Wii']}}, {{ platform_totals['WiiU']}}, {{ platform_totals['3DS']}}, {{ platform_totals['PSV']}}, {{ platform_totals['PSP']}}]

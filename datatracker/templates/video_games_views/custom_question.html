@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+<div id="indexHeader">hello</div>
+<canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Shooter', 'Sports', 'Adventure', 'Misc', 'Action', 'Platform', 'Simulation', 'Role-Playing', 'Fighting', 'Racing', 'Puzzle'],
+        datasets: [{
+            label: 'Genre Game Copies Sold since 2010 (in millions)',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{ genre_totals['Shooter']}}, {{ genre_totals['Sports']}}, {{ genre_totals['Adventure']}}, {{ genre_totals['Misc']}}, {{ genre_totals['Action']}}, {{ genre_totals['Platform']}}, {{ genre_totals['Simulation']}}, {{ genre_totals['Role-Playing']}}, {{ genre_totals['Fighting']}}, {{ genre_totals['Racing']}}, {{ genre_totals['Puzzle']}}]
+        }]
+    },
+    options: {}
+});
+</script>
+{% endblock %}

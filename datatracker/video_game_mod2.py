@@ -76,16 +76,63 @@ def search_result():
 
         for game in games:
             if game.name.lower() == user_input:
-                # return render_template(video_game_views, game=game)
-                return render_template('video_games_views/game_detail')
+                return render_template('video_games_views/game_detail.html', game=game)
 
 
-@bp.route('/game_detail', methods=['GET', 'POST'])
+@bp.route('/game_detail', methods=['GET'])
 def game_detail():
     if request.method == 'GET':
-        return render_template('video_games_views/game_detail')
+        return render_template('video_games_views/game_detail.html')
 
 
 @bp.route('/custom_question')
 def custom_question():
-    pass
+    api_response = requests.get('https://api.dccresource.com/api/games/')
+
+    games = json.loads(api_response.content, object_hook=lambda d: SimpleNamespace(**d))
+
+    recent_games = []
+
+    for game in games:
+        if game.year is not None and game.year >= 2010:
+            recent_games.append(game)
+
+    genre_totals = {
+        'Shooter': 0,
+        'Sports': 0,
+        'Adventure': 0,
+        'Misc': 0,
+        'Action': 0,
+        'Platform': 0,
+        'Simulation': 0,
+        'Role-Playing': 0,
+        'Fighting': 0,
+        'Racing': 0,
+        'Puzzle': 0
+    }
+
+    for game in recent_games:
+        if game.genre == 'Shooter':
+            genre_totals['Shooter'] += game.globalSales
+        elif game.genre == 'Sports':
+            genre_totals['Sports'] += game.globalSales
+        elif game.genre == 'Adventure':
+            genre_totals['Adventure'] += game.globalSales
+        elif game.genre == 'Misc':
+            genre_totals['Misc'] += game.globalSales
+        elif game.genre == 'Action':
+            genre_totals['Action'] += game.globalSales
+        elif game.genre == 'Platform':
+            genre_totals['Platform'] += game.globalSales
+        elif game.genre == 'Simulation':
+            genre_totals['Simulation'] += game.globalSales
+        elif game.genre == 'Role-Playing':
+            genre_totals['Role-Playing'] += game.globalSales
+        elif game.genre == 'Fighting':
+            genre_totals['Fighting'] += game.globalSales
+        elif game.genre == 'Racing':
+            genre_totals['Racing'] += game.globalSales
+        elif game.genre == 'Puzzle':
+            genre_totals['Puzzle'] += game.globalSales
+
+    return render_template('video_games_views/custom_question.html', genre_totals=genre_totals)
