@@ -64,7 +64,7 @@ def best_console():
     return render_template('video_games_views/best_console.html', platform_totals=platform_totals)
 
 
-@bp.route('/search_result', methods=['GET'])
+@bp.route('/search_result')
 def search_result():
     if request.method == 'GET':
         return render_template('video_games_views/search_result.html')
