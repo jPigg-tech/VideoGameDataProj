@@ -1,0 +1,13 @@
+#indexHeader {
+    background-image: url({{ url_for ('static', filename = '/static/images/snesSplash.jpg') }});
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+

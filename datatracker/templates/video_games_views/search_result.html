@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <form method="post">
-    <label for="title">Search for your favorite game</label>
-    <input name="title" id="title" placeholder="Search" value="{{ request.form['title'] }}" required>
-    <input type="submit" value="Submit">
+{% extends 'base.html' %}
 
-      {{ searchmatch }}
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Search For Your Favorite Game</h1>
+<div>
+  <form method="post">
+    <div class="mb-3">
+    <label for="title" ></label>
+    <input name="title" id="title" class="form-label" placeholder="Search" value="{{ request.form['title'] }}" required>
+    </div>
+    <input type="submit" value="Submit" style="bl">
   </form>
-</body>
-</html>
+  </div>
+{% endblock %}
